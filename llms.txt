@@ -6,12 +6,21 @@ Md Nahid Hossain (also known as Nahid Hossain) is a Google Ads Manager at Ecomcl
 
 ## Services
 
-- Google Ads management: Search, Performance Max, Shopping, Demand Gen, Display and YouTube
-- YouTube ads: views first, then subscriber or customer growth
-- Conversion tracking: forms, calls, bookings, purchases, chatbot and WhatsApp clicks with GA4, Google Tag Manager and Enhanced Conversions, validated in Tag Assistant or GA4 DebugView
-- Shopify and booking-system tracking
-- Google Ads audits: search intent, landing-page journey, CPA, ROAS and data quality
-- Growth strategy and Looker Studio reporting for e-commerce and lead generation
+- Google Ads Management: Search, Performance Max, Shopping, Demand Gen, YouTube and Display, run against your cost per lead or sale. (https://nomadnahid.me/services/google-ads-management/)
+- Performance Max, Shopping & Merchant Center: E-commerce growth on Shopify and WooCommerce: product feed optimisation, Shopping and Performance Max built on sales value. (https://nomadnahid.me/services/performance-max-shopping/)
+- Lead Generation for Local Service Businesses: More calls, forms and booked jobs for dental, HVAC, plumbing, cleaning, repair and other local services. (https://nomadnahid.me/services/local-lead-generation/)
+- Google Ads Account Audit: A data-led review of structure, search intent, tracking, landing pages, CPA and ROAS, with a prioritised fix list. (https://nomadnahid.me/services/google-ads-audit/)
+- Online Conversion Tracking: Google Ads conversion tracking for forms, calls, bookings, purchases, chat and WhatsApp clicks, tested before you rely on it. (https://nomadnahid.me/services/conversion-tracking/)
+- Enhanced Conversions (Web & Leads): Enhanced Conversions for web and for leads, so Google Ads can recover more conversions lost to browser and cookie limits. (https://nomadnahid.me/services/enhanced-conversions/)
+- Offline Conversion Tracking: Import CRM, call and form-lead outcomes back into Google Ads, so campaigns optimise toward leads that become customers. (https://nomadnahid.me/services/offline-conversion-tracking/)
+- Server-Side Tracking (sGTM): Server-side Google Tag Manager for GA4 and Google Ads, for more control over the data your site sends. (https://nomadnahid.me/services/server-side-tracking/)
+- GA4 Setup & Reporting: A clean Google Analytics 4 property: key events, e-commerce events, Google Ads linking and reports you can read. (https://nomadnahid.me/services/ga4-setup-reporting/)
+- Google Tag Manager Setup: A tidy GTM container with clear tags, triggers and variables for Google Ads, GA4 and other platforms. (https://nomadnahid.me/services/google-tag-manager-setup/)
+- Booking System Tracking: Track appointments and bookings across Shopify, Halaxy, WordPress and Webflow booking tools in GA4 and Google Ads. (https://nomadnahid.me/services/booking-system-tracking/)
+- Conversion Rate Optimisation (CRO): Landing-page reviews and changes that help more of your paid clicks turn into calls, leads and sales. (https://nomadnahid.me/services/conversion-rate-optimization/)
+- YouTube Ads: Video campaigns for low-cost, engaged views first, then subscriber or customer growth. (https://nomadnahid.me/services/youtube-ads/)
+- Meta Ads (Facebook & Instagram): Facebook and Instagram campaigns for leads and sales, with the Meta Pixel and Conversions API set up properly. (https://nomadnahid.me/services/meta-ads/)
+- Looker Studio Dashboards & Reporting: Clear Looker Studio dashboards for leads, sales, cost per result and ROAS across Google Ads, GA4 and more. (https://nomadnahid.me/services/looker-studio-reporting/)
 
 ## Work
 
