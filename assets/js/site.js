@@ -359,3 +359,150 @@
       }
     }
   })();
+
+  (function () {
+    var n = document.querySelector(".x-nav__links");
+    if (!n) return;
+    function u() {
+      var max = n.scrollWidth - n.clientWidth;
+      n.classList.toggle("is-ovf", max > 2);
+      n.classList.toggle("is-start", n.scrollLeft <= 2);
+      n.classList.toggle("is-end", n.scrollLeft >= max - 2);
+    }
+    n.addEventListener("scroll", u, { passive: true });
+    window.addEventListener("resize", u);
+    window.addEventListener("load", u);
+    u();
+    var _cur = n.querySelector('[aria-current="page"]');
+    if (_cur && n.scrollWidth > n.clientWidth) n.scrollLeft = Math.max(0, _cur.offsetLeft - 24);
+    /* Keep the highlighted section's link in view on narrow screens */
+    new MutationObserver(function (list) {
+      list.forEach(function (m) {
+        var a = m.target;
+        if ((a.getAttribute("aria-current") !== "true" && a.getAttribute("aria-current") !== "page") || n.scrollWidth <= n.clientWidth) return;
+        var nr = n.getBoundingClientRect(), ar = a.getBoundingClientRect();
+        if (ar.left < nr.left + 24 || ar.right > nr.right - 24) n.scrollBy({ left: ar.left - nr.left - 24, behavior: "smooth" });
+      });
+    }).observe(n, { attributes: true, subtree: true, attributeFilter: ["aria-current"] });
+  })();
+
+  /* Auto-scrolling strips: run continuously, follow drags, never pause */
+  (function () {
+    var slow = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function strip(view, track, seconds) {
+      if (!view || !track) return;
+      var first = track.querySelector("li"), dup = track.querySelector(".x-dup");
+      if (!first || !dup) return;
+      view.classList.add("x-strip-js");
+      var period = 0, pos = 0, last = 0, drag = null;
+      function measure() { period = dup.offsetLeft - first.offsetLeft; }
+      function wrap() { if (period > 0) { pos = pos % period; if (pos > 0) pos -= period; } }
+      function frame(t) {
+        var dt = last ? Math.min((t - last) / 1000, 0.1) : 0;
+        last = t;
+        if (!period) measure();
+        if (!drag || !drag.active) pos -= (period / seconds) * (slow ? 0.25 : 1) * dt;
+        wrap();
+        track.style.transform = "translate3d(" + pos.toFixed(2) + "px,0,0)";
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+      window.addEventListener("resize", measure);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+      window.addEventListener("load", measure);
+
+      view.addEventListener("pointerdown", function (e) {
+        if (e.pointerType === "mouse" && e.button !== 0) return;
+        drag = { id: e.pointerId, x: e.clientX, y: e.clientY, start: pos, active: false };
+      });
+      view.addEventListener("pointermove", function (e) {
+        if (!drag || e.pointerId !== drag.id) return;
+        var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+        if (!drag.active) {
+          if (Math.abs(dy) > 8 && Math.abs(dy) > Math.abs(dx)) { drag = null; return; }
+          if (Math.abs(dx) < 6) return;
+          drag.active = true; drag.x = e.clientX; drag.start = pos; dx = 0;
+          view.classList.add("is-dragging");
+          try { view.setPointerCapture(e.pointerId); } catch (err) {}
+        }
+        if (e.cancelable) e.preventDefault();
+        pos = drag.start + dx;
+        wrap();
+        if (pos !== drag.start + dx) { drag.start = pos - dx; }
+      });
+      function end(e) {
+        if (!drag || (e && e.pointerId !== drag.id)) return;
+        drag = null;
+        view.classList.remove("is-dragging");
+        last = 0;
+      }
+      view.addEventListener("pointerup", end);
+      view.addEventListener("pointercancel", end);
+      view.addEventListener("lostpointercapture", end);
+      view.addEventListener("dragstart", function (e) { e.preventDefault(); });
+    }
+    strip(document.querySelector(".x-marquee"), document.querySelector(".x-marquee__track"), 48);
+    strip(document.querySelector(".x-logos__view"), document.querySelector(".x-logos__track"), 60);
+  })();
+
+  (function () {
+    var track = document.getElementById("rv-track");
+    if (!track) return;
+    var slides = Array.prototype.slice.call(track.children);
+    var prev = document.getElementById("rv-prev"), next = document.getElementById("rv-next"), dotsBox = document.getElementById("rv-dots");
+    var dots = [], raf = 0;
+    function step() {
+      if (slides.length < 2) return track.clientWidth || 1;
+      return (slides[1].offsetLeft - slides[0].offsetLeft) || 1;
+    }
+    function maxScroll() { return Math.max(0, track.scrollWidth - track.clientWidth); }
+    function stops() { return Math.max(1, Math.min(slides.length, Math.ceil(maxScroll() / step() - 0.05) + 1)); }
+    function current() {
+      if (track.scrollLeft >= maxScroll() - 4) return stops() - 1;
+      return Math.min(stops() - 1, Math.max(0, Math.round(track.scrollLeft / step())));
+    }
+    function go(i) {
+      i = Math.max(0, Math.min(stops() - 1, i));
+      track.scrollTo({ left: Math.min(maxScroll(), slides[i].offsetLeft - slides[0].offsetLeft), behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    }
+    var narrowMq = window.matchMedia("(max-width: 599px)"), dotMode = "";
+    function buildDots() {
+      var n = stops(), mode = narrowMq.matches ? "span" : "button";
+      if (dots.length === n && dotMode === mode) return;
+      dotMode = mode;
+      dotsBox.innerHTML = "";
+      dots = [];
+      if (mode === "span") { dotsBox.removeAttribute("role"); dotsBox.setAttribute("aria-hidden", "true"); }
+      else { dotsBox.setAttribute("role", "group"); dotsBox.removeAttribute("aria-hidden"); }
+      for (var i = 0; i < n; i++) {
+        var b = document.createElement(mode);
+        b.className = "x-rv__dot";
+        if (mode === "button") {
+          b.type = "button";
+          b.setAttribute("aria-label", "Go to review " + (i + 1) + " of " + n);
+          b.setAttribute("aria-controls", "rv-track");
+          (function (k) { b.addEventListener("click", function () { go(k); }); })(i);
+        }
+        dotsBox.appendChild(b);
+        dots.push(b);
+      }
+    }
+    function update() {
+      raf = 0;
+      var c = current();
+      dots.forEach(function (d, i) { d.setAttribute("aria-current", i === c ? "true" : "false"); });
+      prev.disabled = track.scrollLeft <= 4;
+      next.disabled = track.scrollLeft >= maxScroll() - 4;
+    }
+    function queue() { if (!raf) raf = requestAnimationFrame(update); }
+    prev.addEventListener("click", function () { go(current() - 1); });
+    next.addEventListener("click", function () { go(current() + 1); });
+    track.addEventListener("scroll", queue, { passive: true });
+    track.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); go(current() + 1); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); go(current() - 1); }
+    });
+    window.addEventListener("resize", function () { buildDots(); queue(); });
+    buildDots();
+    update();
+  })();
