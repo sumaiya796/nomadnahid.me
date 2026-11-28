@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How I set up e-commerce tracking: GTM, GA4 events, Google Ads purchase conversions and Enhanced Conversions | Md Nahid Hossain</title>
+    <meta name="description" content="Five steps to sales data a store can trust, so ROAS reflects actual sales." />
+    <link rel="canonical" href="https://nomadnahid.me/blog/ecommerce-tracking-gtm-ga4-google-ads/" />
+    <meta name="theme-color" content="#FBFAF7" />
+    <meta name="author" content="Md Nahid Hossain" />
+    <meta property="og:site_name" content="Md Nahid Hossain" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How I set up e-commerce tracking: GTM, GA4 events, Google Ads purchase conversions and Enhanced Conversions | Md Nahid Hossain" />
+    <meta property="og:description" content="Five steps to sales data a store can trust, so ROAS reflects actual sales." />
+    <meta property="og:url" content="https://nomadnahid.me/blog/ecommerce-tracking-gtm-ga4-google-ads/" />
+    <meta property="og:image" content="https://nomadnahid.me/assets/img/portrait-pro.webp" />
+    <meta property="og:image:alt" content="Portrait of Md Nahid Hossain, Google Ads manager" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How I set up e-commerce tracking: GTM, GA4 events, Google Ads purchase conversions and Enhanced Conversions | Md Nahid Hossain" />
+    <meta name="twitter:description" content="Five steps to sales data a store can trust, so ROAS reflects actual sales." />
+    <meta name="twitter:image" content="https://nomadnahid.me/assets/img/portrait-pro.webp" />
+    <script>document.documentElement.classList.add("x-js");</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How I set up e-commerce tracking: GTM, GA4 events, Google Ads purchase conversions and Enhanced Conversions",
+  "description": "Five steps to sales data a store can trust, so ROAS reflects actual sales.",
+  "datePublished": "2026-11-26",
+  "dateModified": "2026-11-28",
+  "url": "https://nomadnahid.me/blog/ecommerce-tracking-gtm-ga4-google-ads/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nomadnahid.me/blog/ecommerce-tracking-gtm-ga4-google-ads/"
+  },
+  "image": "https://nomadnahid.me/assets/img/portrait-pro.webp",
+  "wordCount": 207,
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "@id": "https://nomadnahid.me/#person",
+    "name": "Md Nahid Hossain",
+    "url": "https://nomadnahid.me/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "@id": "https://nomadnahid.me/#person",
+    "name": "Md Nahid Hossain",
+    "url": "https://nomadnahid.me/"
+  }
+}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="../../assets/css/hark.css" />
+    <link rel="stylesheet" href="../../assets/css/hark-hero.css" />
+    <link rel="stylesheet" href="../../assets/css/site.css" />
+  </head>
+  <body>
+    <div class="page" id="top">
+      <header class="x-nav" id="nav" aria-label="Site">
+        <a class="x-brand" href="../../">Md Nahid Hossain<small>Google Ads Manager</small></a>
+        <nav class="x-nav__links" aria-label="Main">
+          <a href="../../">Home</a>
+          <a href="../../case-studies/">Case studies</a>
+          <a href="../../services/">Services</a>
+          <a href="../../reviews/">Reviews</a>
+          <a href="../../about/">About</a>
+          <a href="../../blog/" aria-current="page">Blog</a>
+          <a href="../../contact/">Contact</a>
+        </nav>
+        <a class="x-btn x-btn--primary x-btn--sm" href="../../contact/#lead-form" data-event="lead_cta_click">Get a free plan →</a>
+      </header>
+
+      <main class="main">
+        <article class="section" id="post">
+          <nav class="x-crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span aria-hidden="true">/</span><a href="../">Blog</a></nav>
+          <header class="head x-posthead">
+            <p class="head__eyebrow">Tracking guide · E-commerce</p>
+            <h1>How I set up e-commerce tracking: GTM, GA4 events, Google Ads purchase conversions and Enhanced Conversions</h1>
+            <p class="x-postmeta">By <a href="../../about/">Md Nahid Hossain</a> · <time datetime="2026-11-26">26 November 2026</time> · 1 min read</p>
+          </header>
+          <div class="x-article x-postbody">
+<p class="x-lede">A store needs sales data it can trust before it makes ad decisions. If purchases aren't tracked properly, ROAS is a guess and Smart Bidding learns from the wrong signals. This is the setup I use.</p>
+
+<h2>01. Make GTM the single home for every tag</h2>
+<p>Put every tag in Google Tag Manager rather than spreading them across theme code and plugins. One place to manage tags means fewer duplicates, fewer gaps and easier testing.</p>
+
+<h2>02. Send GA4 e-commerce events</h2>
+<p>Track the shopping journey as GA4 e-commerce events, ending with the purchase. Pass the order value and currency with each purchase so revenue in GA4 matches the store.</p>
+
+<h2>03. Add Google Ads purchase conversions</h2>
+<p>Set up a Google Ads purchase conversion that fires on completed orders, carrying the order value. This is what lets campaigns optimize for sales and report real ROAS.</p>
+
+<h2>04. Turn on Enhanced Conversions</h2>
+<p>Enhanced Conversions sends hashed first-party customer data with the conversion, which helps Google Ads match sales it would otherwise miss.</p>
+
+<h2>05. Link Google Ads with GA4, then test</h2>
+<p>Link the two accounts so data flows both ways, then test every tag in GTM Preview before publishing.</p>
+
+<h2>What you get</h2>
+  <ul><li>Real ROAS the store can trust</li><li>Ad decisions based on actual sales</li></ul>
+          </div>
+          <aside class="x-ctabox x-card-base x-postcta" aria-label="Get help">
+            <div>
+              <h3>Want this set up properly on your account? Tell me about your business and I'll reply with an honest take and next steps.</h3>
+              <div class="links">
+                <a class="x-btn x-btn--primary" href="../../contact/" data-event="lead_cta_click">Get a free plan →</a>
+                <a class="x-btn x-btn--ghost" href="https://calendar.app.google/p8CFzropzLoDKJ348" target="_blank" rel="noopener" data-event="book_call_click">Book a 30-min call</a>
+              </div>
+            </div>
+          </aside>
+          <nav class="x-related" aria-label="More articles">
+            <h2>More guides</h2>
+            <ul>
+              <li><a href="../ga4-google-ads-conversion-tracking-gtm/">How to set up GA4 and Google Ads conversion tracking the right way (with GTM)</a></li>
+              <li><a href="../performance-max-ecommerce-setup/">Performance Max for e-commerce: what to set up before you scale</a></li>
+              <li><a href="../google-ads-local-service-leads/">Google Ads for local service businesses: getting more calls and booked jobs</a></li>
+            </ul>
+          </nav>
+        </article>
+      </main>
+      <footer class="x-foot">
+        <div class="x-foot__brand"><b>Md Nahid Hossain</b><p>Google Ads manager and conversion tracking specialist for businesses that want ads to pay for themselves.</p><p class="x-foot__mail"><a href="mailto:nomad.nahid001@gmail.com" data-event="email_click">nomad.nahid001@gmail.com</a></p>
+          <ul class="x-foot__social" aria-label="Profiles">
+            <li><a href="https://www.linkedin.com/in/md-nahid-hossain1" target="_blank" rel="me noopener" data-event="linkedin_click"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3Zm7 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4Z"/></svg>LinkedIn</a></li>
+            <li><a href="https://www.fiverr.com/ppc.pappu" target="_blank" rel="me noopener" data-event="fiverr_click"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="currentColor">fi</text></svg>Fiverr</a></li>
+            <li><a href="https://www.facebook.com/iamthenahid" target="_blank" rel="me noopener" data-event="facebook_click"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4V10.5H7.8v3h2.6V21Z"/></svg>Facebook</a></li>
+          </ul>
+        </div>
+        <nav aria-label="Footer">
+          <a href="../../">Home</a><a href="../../case-studies/">Case studies</a><a href="../../services/">Services</a><a href="../../reviews/">Reviews</a><a href="../../about/">About</a><a href="../../blog/" aria-current="page">Blog</a><a href="../../contact/">Contact</a>
+        </nav>
+        <p class="x-foot__copy">© 2026 · Dhaka, Bangladesh</p>
+      </footer>
+    </div>
+    <div class="x-mbar" id="mbar" aria-label="Quick contact" role="region">
+      <a class="x-btn x-btn--primary" href="../../contact/#lead-form" data-event="lead_cta_click">Get a free plan →</a>
+      <a class="x-btn x-btn--wa" data-event="whatsapp_click" href="https://wa.me/8801315551508?text=Hi%20Nahid%2C%20I%27d%20like%20to%20talk%20about%20my%20Google%20Ads%20account." target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+    <script src="../../assets/js/hark.js"></script>
+    <script src="../../assets/js/site.js"></script>
+  </body>
+</html>
