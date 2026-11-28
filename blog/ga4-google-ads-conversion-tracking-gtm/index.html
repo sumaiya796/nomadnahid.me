@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How to set up GA4 and Google Ads conversion tracking the right way (with GTM) | Md Nahid Hossain</title>
+    <meta name="description" content="A step-by-step order for tracking leads and sales once, in GA4 and Google Ads, before you trust any bidding decision." />
+    <link rel="canonical" href="https://nomadnahid.me/blog/ga4-google-ads-conversion-tracking-gtm/" />
+    <meta name="theme-color" content="#FBFAF7" />
+    <meta name="author" content="Md Nahid Hossain" />
+    <meta property="og:site_name" content="Md Nahid Hossain" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to set up GA4 and Google Ads conversion tracking the right way (with GTM) | Md Nahid Hossain" />
+    <meta property="og:description" content="A step-by-step order for tracking leads and sales once, in GA4 and Google Ads, before you trust any bidding decision." />
+    <meta property="og:url" content="https://nomadnahid.me/blog/ga4-google-ads-conversion-tracking-gtm/" />
+    <meta property="og:image" content="https://nomadnahid.me/assets/img/portrait.jpg" />
+    <meta property="og:image:alt" content="Portrait of Md Nahid Hossain, Google Ads manager" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to set up GA4 and Google Ads conversion tracking the right way (with GTM) | Md Nahid Hossain" />
+    <meta name="twitter:description" content="A step-by-step order for tracking leads and sales once, in GA4 and Google Ads, before you trust any bidding decision." />
+    <meta name="twitter:image" content="https://nomadnahid.me/assets/img/portrait.jpg" />
+    <script>document.documentElement.classList.add("x-js");</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to set up GA4 and Google Ads conversion tracking the right way (with GTM)",
+  "description": "A step-by-step order for tracking leads and sales once, in GA4 and Google Ads, before you trust any bidding decision.",
+  "datePublished": "2026-11-28",
+  "dateModified": "2026-11-28",
+  "url": "https://nomadnahid.me/blog/ga4-google-ads-conversion-tracking-gtm/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nomadnahid.me/blog/ga4-google-ads-conversion-tracking-gtm/"
+  },
+  "image": "https://nomadnahid.me/assets/img/portrait.jpg",
+  "wordCount": 1281,
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "@id": "https://nomadnahid.me/#person",
+    "name": "Md Nahid Hossain",
+    "url": "https://nomadnahid.me/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "@id": "https://nomadnahid.me/#person",
+    "name": "Md Nahid Hossain",
+    "url": "https://nomadnahid.me/"
+  }
+}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="../../assets/css/hark.css" />
+    <link rel="stylesheet" href="../../assets/css/hark-hero.css" />
+    <link rel="stylesheet" href="../../assets/css/site.css" />
+  </head>
+  <body>
+    <div class="page" id="top">
+      <header class="x-nav" id="nav" aria-label="Site">
+        <a class="x-brand" href="../../">Md Nahid Hossain<small>Google Ads Manager</small></a>
+        <nav class="x-nav__links" aria-label="Main">
+          <a href="../../">Home</a>
+          <a href="../../case-studies/">Case studies</a>
+          <a href="../../services/">Services</a>
+          <a href="../../reviews/">Reviews</a>
+          <a href="../../about/">About</a>
+          <a href="../../blog/" aria-current="page">Blog</a>
+          <a href="../../contact/">Contact</a>
+        </nav>
+        <a class="x-btn x-btn--primary x-btn--sm" href="../../contact/#lead-form" data-event="lead_cta_click">Get a free plan →</a>
+      </header>
+
+      <main class="main">
+        <article class="section" id="post">
+          <nav class="x-crumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span aria-hidden="true">/</span><a href="../">Blog</a></nav>
+          <header class="head x-posthead">
+            <p class="head__eyebrow">Tracking guide · GA4 + GTM</p>
+            <h1>How to set up GA4 and Google Ads conversion tracking the right way (with GTM)</h1>
+            <p class="x-postmeta">By <a href="../../about/">Md Nahid Hossain</a> · <time datetime="2026-11-28">28 November 2026</time> · 6 min read</p>
+          </header>
+          <div class="x-article x-postbody">
+<p class="x-lede">If your Google Ads account is making decisions from bad conversion data, every bid, budget and "winning" ad is built on sand. The good news: a clean setup with Google Tag Manager (GTM), Google Analytics 4 (GA4) and Google Ads is not complicated once you follow a clear order. This is the order I use on new accounts.</p>
+
+<h2>Why tracking comes before anything else</h2>
+<p>Smart Bidding strategies such as Maximize Conversions, Target CPA and Target ROAS learn from the conversions you tell Google about. If a form submission is counted twice, if page reloads count as leads, or if newsletter sign-ups are mixed in with real enquiries, the system will happily optimise toward the wrong thing. It is not the algorithm's fault. It is doing exactly what the data says.</p>
+<p>So before changing keywords or budgets, I make sure three things are true: every important action is tracked, each action is counted once, and Google Ads knows which actions actually matter to the business.</p>
+
+<h2>Step 1: Decide what a conversion really is</h2>
+<p>Start with a short list, written in plain language, before you open any tool. For most businesses it looks something like this:</p>
+<ul>
+  <li><strong>E-commerce:</strong> completed purchase (with order value), and optionally add to cart and begin checkout as supporting signals.</li>
+  <li><strong>Lead generation:</strong> submitted enquiry form, phone call from the ad or website, booked appointment, and sometimes WhatsApp or chat clicks.</li>
+</ul>
+<p>Then split the list into two groups. <strong>Primary</strong> actions are the ones you would happily pay for: a sale, a qualified lead, a booking. <strong>Secondary</strong> actions are useful to watch but should not drive bidding, such as a brochure download or a click on an email link. This distinction matters later, inside Google Ads.</p>
+
+<h2>Step 2: Put one GTM container on every page</h2>
+<p>Install the GTM container snippet once, in the site's header and body, on every page. On Shopify, WordPress and most site builders there is a standard place for this. The goal is that GTM becomes the single home for your marketing tags.</p>
+<p>A common problem I see is tags living in three places at once: a plugin, the theme code and GTM. That is how duplicate conversions happen. If you move to GTM, remove the old hard-coded tags or plugin settings that send the same events, and keep a short note of what you removed.</p>
+
+<h2>Step 3: Add the Google tag and a Conversion Linker</h2>
+<p>Inside GTM, create a <strong>Google tag</strong> using your GA4 measurement ID (it starts with "G-") and fire it on all pages. This sends page views and the basic data GA4 needs.</p>
+<p>Next, add a <strong>Conversion Linker</strong> tag that also fires on all pages. It stores the ad click information so that a conversion later in the visit can be matched back to the Google Ads click. It is a small tag, but leaving it out is one of the most common reasons conversions go missing.</p>
+
+<h2>Step 4: Build triggers for real actions, not just page views</h2>
+<p>This is where most setups go wrong. A "thank-you page" trigger works only if that page cannot be reached any other way and is not reloaded or bookmarked. When those conditions are not safe, use a trigger based on the action itself:</p>
+<ul>
+  <li><strong>Forms:</strong> a successful form submission event. Many form tools push a message to the data layer when a form is sent; use that rather than a button click, so failed or empty submissions are not counted.</li>
+  <li><strong>Purchases:</strong> the purchase event from your store's data layer, which should include the order ID, value and currency.</li>
+  <li><strong>Phone and WhatsApp clicks:</strong> a click trigger on links that start with "tel:" or point to WhatsApp.</li>
+</ul>
+<p>Name everything clearly, for example "Trigger: Lead form success" or "Event: purchase". The next person who opens the container, possibly you in six months, will thank you.</p>
+
+<h2>Step 5: Send GA4 events</h2>
+<p>For each trigger, create a GA4 event tag. Where possible, use Google's recommended event names, such as <code>generate_lead</code> for leads and <code>purchase</code> for orders, because GA4 reports understand them out of the box. For purchases, pass the <code>transaction_id</code>, <code>value</code> and <code>currency</code> parameters, plus the items if your store provides them.</p>
+<p>In GA4, mark the events that matter as key events (this is what GA4 now calls conversions). Keep the list short and meaningful.</p>
+
+<h2>Step 6: Create Google Ads conversion actions</h2>
+<p>You have two ways to get conversions into Google Ads: import key events from GA4, or use the Google Ads conversion tag directly in GTM. Both work. My usual preference for the main purchase or lead action is the native Google Ads conversion tag, because it records conversions in Google Ads directly and pairs well with Enhanced Conversions. GA4 imports are fine for secondary actions or simpler setups.</p>
+<p>Whichever you choose, avoid counting the same action twice as primary, for example a native purchase tag and an imported GA4 purchase both set to primary. Pick one as primary and set the other to secondary, or remove it.</p>
+<p>For each conversion action, check the settings:</p>
+<ul>
+  <li><strong>Count:</strong> "Every" for purchases, "One" for leads, so one person submitting a form twice is one lead.</li>
+  <li><strong>Value:</strong> the real order value for sales; for leads, a consistent estimated value if you know roughly what a lead is worth.</li>
+  <li><strong>Primary or secondary:</strong> only actions you would pay for should be primary.</li>
+</ul>
+
+<h2>Step 7: Turn on Enhanced Conversions</h2>
+<p>Enhanced Conversions sends hashed first-party data, such as the email address entered in a form or checkout, along with the conversion. Google uses it to match conversions it would otherwise lose, for example when cookies are limited. In GTM, you can supply this through a user-provided data variable on the conversion tag. Make sure your privacy policy covers it.</p>
+
+<h2>Step 8: Respect consent, especially for European visitors</h2>
+<p>If you have visitors from the EU or UK, you need a consent banner and Google Consent Mode configured correctly, so tags behave according to each visitor's choice. Consent Mode is set up in GTM alongside your consent tool. It is worth doing properly: without it, you risk both compliance problems and gaps in the data your campaigns rely on.</p>
+
+<h2>Step 9: Test before you publish</h2>
+<p>Never publish a container without testing. My routine:</p>
+<ol>
+  <li>Open <strong>GTM Preview</strong> (Tag Assistant) and complete each action yourself: submit a test form, click to call, place a test order if possible.</li>
+  <li>Check that each tag fires once, on the right action, and that values and IDs are filled in.</li>
+  <li>Open <strong>GA4 DebugView</strong> and confirm the events arrive with the right parameters.</li>
+  <li>After publishing, watch the conversion action status in Google Ads over the next days, and compare the numbers with your CRM, inbox or store orders.</li>
+</ol>
+<p>Small differences between platforms are normal, because each one counts slightly differently. Large gaps usually point to a missing tag, a duplicate, or a trigger that fires on the wrong thing.</p>
+
+<h2>Common mistakes to avoid</h2>
+<ul>
+  <li>Counting page views of a thank-you page that can be reloaded or reached directly.</li>
+  <li>Having the same purchase tracked by a plugin and by GTM.</li>
+  <li>Setting every action, including micro-actions, as primary.</li>
+  <li>Forgetting the Conversion Linker tag.</li>
+  <li>Publishing changes without testing in Preview mode.</li>
+</ul>
+
+<h2>The result you are aiming for</h2>
+<p>A good setup is boring in the best way. Conversions in Google Ads roughly match what you see in your store or inbox, each lead or sale is counted once, and the bidding system learns from the actions that actually grow your business. That is the point where it makes sense to start scaling budgets.</p>
+<p>This is the same order I follow on client accounts: audit what exists, decide what counts, rebuild the tags in GTM, and validate every event before campaigns depend on it.</p>
+
+          </div>
+          <aside class="x-ctabox x-card-base x-postcta" aria-label="Get help">
+            <div>
+              <h3>Want this set up properly on your account? Tell me about your business and I'll reply with an honest take and next steps.</h3>
+              <div class="links">
+                <a class="x-btn x-btn--primary" href="../../contact/" data-event="lead_cta_click">Get a free plan →</a>
+                <a class="x-btn x-btn--ghost" href="https://calendar.app.google/p8CFzropzLoDKJ348" target="_blank" rel="noopener" data-event="book_call_click">Book a 30-min call</a>
+              </div>
+            </div>
+          </aside>
+          <nav class="x-related" aria-label="More articles">
+            <h2>More guides</h2>
+            <ul>
+              <li><a href="../performance-max-ecommerce-setup/">Performance Max for e-commerce: what to set up before you scale</a></li>
+              <li><a href="../google-ads-local-service-leads/">Google Ads for local service businesses: getting more calls and booked jobs</a></li>
+              <li><a href="../ecommerce-tracking-gtm-ga4-google-ads/">How I set up e-commerce tracking: GTM, GA4 events, Google Ads purchase conversions and Enhanced Conversions</a></li>
+            </ul>
+          </nav>
+        </article>
+      </main>
+      <footer class="x-foot">
+        <div class="x-foot__brand"><b>Md Nahid Hossain</b><p>Google Ads manager and conversion tracking specialist for businesses that want ads to pay for themselves.</p><p class="x-foot__mail"><a href="mailto:nomad.nahid001@gmail.com" data-event="email_click">nomad.nahid001@gmail.com</a></p></div>
+        <nav aria-label="Footer">
+          <a href="../../">Home</a><a href="../../case-studies/">Case studies</a><a href="../../services/">Services</a><a href="../../reviews/">Reviews</a><a href="../../about/">About</a><a href="../../blog/" aria-current="page">Blog</a><a href="../../contact/">Contact</a>
+        </nav>
+        <p class="x-foot__copy">© 2026 · Dhaka, Bangladesh</p>
+      </footer>
+    </div>
+    <div class="x-mbar" id="mbar" aria-label="Quick contact" role="region">
+      <a class="x-btn x-btn--primary" href="../../contact/#lead-form" data-event="lead_cta_click">Get a free plan →</a>
+      <a class="x-btn x-btn--wa" data-event="whatsapp_click" href="https://wa.me/8801315551508?text=Hi%20Nahid%2C%20I%27d%20like%20to%20talk%20about%20my%20Google%20Ads%20account." target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+    <script src="../../assets/js/hark.js"></script>
+    <script src="../../assets/js/site.js"></script>
+  </body>
+</html>
